@@ -28,7 +28,16 @@
          <li>
           <%= link_to 'About', :about_index %>
         </li>
+        
+          <% if current_user %>
+            <li><a>Signed in as <%= current_user.name %></a></li>  <li> <%= link_to "Logout", '/logout' %></li>
+          <% else %>
+            <li><%= link_to 'Login', '/login' %></li>  <li><%= link_to 'Signup', '/signup' %></li>
+          <% end %>
+
+        </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -39,6 +48,7 @@
           <ul class="dropdown-menu">
             <li><%= link_to 'Dashboard', [:admin, :root] %></li>
             <li><%= link_to 'Products',  [:admin, :products] %></li>
+            <li><%= link_to 'Category',  [:admin, :categories] %></li>
           </ul>
         </li>
         <li>
