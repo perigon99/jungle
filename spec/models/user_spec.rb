@@ -73,5 +73,32 @@ RSpec.describe User, type: :model do
         @test1.save
         expect(@test1.errors.full_messages).not_to be_empty   
     end
+
+   
+  
+
+  end 
+ describe '.authenticate_with_credentials' do
+      it 'space in email field' do
+      @test1 = User.create(   
+        :name => 'test',
+        :email => '   bob3@bob.bob', 
+        :password => '123456789', 
+        :password_confirmation => '123456789'
+        )
+      @test1.save
+      expect(@test1.errors.full_messages).to be_empty 
+    end
+    it 'Upper case email issue' do
+      @test1 = User.create(   
+        :name => 'test',
+        :email => '   BOB4@bob.bob', 
+        :password => '123456789', 
+        :password_confirmation => '123456789'
+        )
+      @test1.save
+      expect(@test1.errors.full_messages).to be_empty 
+    end
   end
 end
+ 
